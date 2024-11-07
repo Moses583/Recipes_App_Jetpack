@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.ravemaster.recipeappjetpack.data.remote.gettags.models.TagsApiResponse
 import com.ravemaster.recipeappjetpack.domain.repository.TagsRepository
 import com.ravemaster.recipeappjetpack.domain.utils.Resource
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -12,6 +13,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class TagsViewModel @Inject constructor(
     private val tagsRepository: TagsRepository
 ): ViewModel() {

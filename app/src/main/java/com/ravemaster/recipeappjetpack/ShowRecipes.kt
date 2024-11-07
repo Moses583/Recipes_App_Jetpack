@@ -28,10 +28,9 @@ import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.Recipes
 import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.Result
 
 @Composable
-fun ShowRecipes(modifier: Modifier = Modifier, recipes: RecipesListResponse) {
+fun ShowRecipes(recipes: RecipesListResponse) {
     LazyRow (
-        modifier = modifier
-            .fillMaxSize()
+        modifier = Modifier
             .padding(10.dp),
         contentPadding = PaddingValues(10.dp),
     ) {
