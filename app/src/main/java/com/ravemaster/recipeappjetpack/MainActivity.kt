@@ -13,14 +13,14 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.ravemaster.recipeappjetpack.presentation.MyViewModel
+import com.ravemaster.recipeappjetpack.presentation.GetRecipesViewModel
 import com.ravemaster.recipeappjetpack.ui.theme.PropoertiesAppJetpackTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    val viewModel: MyViewModel by viewModels()
+    val viewModel: GetRecipesViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
