@@ -24,8 +24,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import coil.request.ImageRequest
-import com.ravemaster.recipeappjetpack.data.remote.models.RecipesListResponse
-import com.ravemaster.recipeappjetpack.data.remote.models.Result
+import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.RecipesListResponse
+import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.Result
 
 @Composable
 fun ShowRecipes(modifier: Modifier = Modifier, recipes: RecipesListResponse) {

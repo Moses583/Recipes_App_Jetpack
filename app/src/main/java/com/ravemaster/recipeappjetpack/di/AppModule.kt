@@ -1,6 +1,7 @@
 package com.ravemaster.recipeappjetpack.di
 
-import com.ravemaster.recipeappjetpack.data.remote.GetRecipes
+import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.GetRecipes
+import com.ravemaster.recipeappjetpack.data.remote.gettags.GetTags
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -24,14 +25,22 @@ object AppModule {
         .addInterceptor(loggingInterceptor)
         .build()
 
+    private val retrofit = Retrofit.Builder()
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
+        .baseUrl("https://tasty.p.rapidapi.com/")
+        .build()
+
     @Provides
     @Singleton
-    fun provideLocationApi(): GetRecipes{
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(client)
-            .baseUrl(GetRecipes.BASE_URL)
-            .build().create(GetRecipes::class.java)
+    fun provideGetRecipesApi(): GetRecipes {
+        return retrofit.create(GetRecipes::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideGetTagsApi(): GetTags {
+        return retrofit.create(GetTags::class.java)
     }
 
 }

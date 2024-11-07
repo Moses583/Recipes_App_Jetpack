@@ -1,11 +1,8 @@
 package com.ravemaster.recipeappjetpack.presentation
 
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.ravemaster.recipeappjetpack.data.remote.models.RecipesListResponse
+import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.RecipesListResponse
 import com.ravemaster.recipeappjetpack.domain.repository.RecipesListRepository
 import com.ravemaster.recipeappjetpack.domain.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel

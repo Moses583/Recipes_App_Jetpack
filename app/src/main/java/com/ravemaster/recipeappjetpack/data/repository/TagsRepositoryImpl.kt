@@ -1,8 +1,8 @@
 package com.ravemaster.recipeappjetpack.data.repository
 
-import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.GetRecipes
-import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.RecipesListResponse
-import com.ravemaster.recipeappjetpack.domain.repository.RecipesListRepository
+import com.ravemaster.recipeappjetpack.data.remote.gettags.GetTags
+import com.ravemaster.recipeappjetpack.data.remote.gettags.models.TagsApiResponse
+import com.ravemaster.recipeappjetpack.domain.repository.TagsRepository
 import com.ravemaster.recipeappjetpack.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -10,16 +10,16 @@ import okio.IOException
 import retrofit2.HttpException
 import javax.inject.Inject
 
-class RecipesListRepositoryImpl @Inject constructor(
-    private val getRecipes: GetRecipes
-) : RecipesListRepository {
-    override suspend fun getRecipes(from: Int, size: Int): Flow<Resource<RecipesListResponse>> {
+class TagsRepositoryImpl @Inject constructor(
+    private val getTags: GetTags
+) : TagsRepository {
+    override suspend fun getTags(): Flow<Resource<TagsApiResponse>> {
         return flow {
 
             emit(Resource.Loading(true))
 
-            val recipes = try {
-                getRecipes.getRecipes(from = from, size = size,
+            val tags = try {
+                getTags.getTags(
                     "7a9a8d4846mshcfaa4b403a596e8p1d45b5jsneca71b63bb58","tasty.p.rapidapi.com")
             }catch (e: IOException){
                 e.printStackTrace()
@@ -35,9 +35,7 @@ class RecipesListRepositoryImpl @Inject constructor(
                 return@flow
             }
 
-            emit(Resource.Success(recipes))
-
+            emit(Resource.Success(tags))
         }
     }
-
 }

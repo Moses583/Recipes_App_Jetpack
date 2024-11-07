@@ -1,6 +1,6 @@
 package com.ravemaster.recipeappjetpack.presentation
 
-import com.ravemaster.recipeappjetpack.data.remote.models.RecipesListResponse
+import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.RecipesListResponse
 
 data class MyStates(
     val recipesListResponse: RecipesListResponse? = null,

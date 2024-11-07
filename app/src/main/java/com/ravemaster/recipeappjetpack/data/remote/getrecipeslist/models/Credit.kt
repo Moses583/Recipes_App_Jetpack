@@ -1,4 +1,4 @@
-package com.ravemaster.recipeappjetpack.data.remote.models
+package com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models
 
 data class Credit(
     val is_verified: Boolean,
