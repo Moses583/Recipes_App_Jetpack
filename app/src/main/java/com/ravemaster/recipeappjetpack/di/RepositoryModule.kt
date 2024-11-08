@@ -1,7 +1,9 @@
 package com.ravemaster.recipeappjetpack.di
 
+import com.ravemaster.recipeappjetpack.data.repository.FeedRepositoryImpl
 import com.ravemaster.recipeappjetpack.data.repository.RecipesListRepositoryImpl
 import com.ravemaster.recipeappjetpack.data.repository.TagsRepositoryImpl
+import com.ravemaster.recipeappjetpack.domain.repository.FeedRepository
 import com.ravemaster.recipeappjetpack.domain.repository.RecipesListRepository
 import com.ravemaster.recipeappjetpack.domain.repository.TagsRepository
 import dagger.Binds
@@ -25,4 +27,10 @@ abstract class RepositoryModule {
     abstract fun bindsTagsRepository(
         tagsRepositoryImpl: TagsRepositoryImpl
     ): TagsRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindsFeedRepository(
+        feedRepositoryImpl: FeedRepositoryImpl
+    ): FeedRepository
 }

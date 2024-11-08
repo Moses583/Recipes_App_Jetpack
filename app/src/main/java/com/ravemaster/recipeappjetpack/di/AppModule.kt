@@ -1,5 +1,6 @@
 package com.ravemaster.recipeappjetpack.di
 
+import com.ravemaster.recipeappjetpack.data.remote.getfeed.GetFeed
 import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.GetRecipes
 import com.ravemaster.recipeappjetpack.data.remote.gettags.GetTags
 import dagger.Module
@@ -41,6 +42,12 @@ object AppModule {
     @Singleton
     fun provideGetTagsApi(): GetTags {
         return retrofit.create(GetTags::class.java)
+    }
+
+    @Provides
+    @Singleton
+    fun provideFeedsApi(): GetFeed {
+        return retrofit.create(GetFeed::class.java)
     }
 
 }
