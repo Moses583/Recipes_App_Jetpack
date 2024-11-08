@@ -31,8 +31,8 @@ import com.ravemaster.recipeappjetpack.data.remote.getrecipeslist.models.Result
 fun ShowRecipes(recipes: RecipesListResponse) {
     LazyRow (
         modifier = Modifier
-            .padding(10.dp),
-        contentPadding = PaddingValues(10.dp),
+            .padding(4.dp),
+        contentPadding = PaddingValues(4.dp),
     ) {
         items(recipes.results.size){ item ->
             ShowRecipeItem(recipes.results[item])
@@ -46,7 +46,7 @@ fun ShowRecipeItem(result: Result) {
         modifier = Modifier
             .width(400.dp)
             .height(400.dp)
-            .padding(10.dp),
+            .padding(4.dp),
         horizontalAlignment = Alignment.Start
     ) {
         Box (
@@ -69,12 +69,12 @@ fun ShowDetails(result: Result) {
         fontWeight = FontWeight.Bold,
         fontSize = 18.sp,
         color = Color.Black,
-        modifier = Modifier.padding(3.dp)
+        modifier = Modifier.padding(4.dp)
     )
     Text(
         text = "Servings for ${result.num_servings} people",
         color = Color.Black,
-        modifier = Modifier.padding(3.dp)
+        modifier = Modifier.padding(4.dp)
     )
 }
 

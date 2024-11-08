@@ -10,7 +10,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,7 +23,8 @@ import com.ravemaster.recipeappjetpack.presentation.GetRecipesViewModel
 @Composable
 fun ShowTags(tags: TagsApiResponse, recipesViewModel: GetRecipesViewModel) {
     LazyRow (
-        contentPadding = PaddingValues(10.dp),
+        modifier = Modifier.padding(4.dp),
+        contentPadding = PaddingValues(4.dp),
     ) {
         items(tags.results.size){ item ->
             ShowTagsItem(tags.results[item],recipesViewModel)
@@ -37,8 +37,8 @@ fun ShowTagsItem(result: Result, recipesViewModel: GetRecipesViewModel) {
     Card(
         modifier = Modifier
             .wrapContentSize()
-            .padding(8.dp),
-        colors = CardDefaults.cardColors(MaterialTheme.colorScheme.surface),
+            .padding(4.dp),
+        colors = CardDefaults.cardColors(Color.Magenta),
         shape = RoundedCornerShape(16.dp),
         onClick = {
             recipesViewModel.getRecipes(0,20,result.name)

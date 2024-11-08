@@ -20,6 +20,8 @@ gsonVersion = "2.11.0"
 okhttpVersion = "5.0.0-alpha.10"
 loggingVersion = "5.0.0-alpha.10"
 
+extendedIcons = "1.7.5"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -46,6 +48,8 @@ retrofit = {group = "com.squareup.retrofit2", name = "retrofit", version.ref = "
 gsonConverter = {group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "gsonVersion"}
 okhttp3= {group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttpVersion"}
 logging-interceptor= {group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "loggingVersion"}
+
+extended-icons = {group = "androidx.compose.material", name = "material-icons-extended", version.ref = "extendedIcons"}
 
 coil = {group = "io.coil-kt", name = "coil-compose", version.ref = "coilVersion"}
 

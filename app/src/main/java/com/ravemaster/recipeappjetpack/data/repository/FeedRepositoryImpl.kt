@@ -21,7 +21,7 @@ class FeedRepositoryImpl @Inject constructor(
             emit(Resource.Loading(true))
 
             val feeds = try {
-                getFeed.getFeeds(size = size, timeZone = "+0700", veg = false, from = from,
+                getFeed.getFeeds(size = size, timeZone = "+0300", veg = false, from = from,
                     "7a9a8d4846mshcfaa4b403a596e8p1d45b5jsneca71b63bb58","tasty.p.rapidapi.com")
             }catch (e: IOException){
                 e.printStackTrace()

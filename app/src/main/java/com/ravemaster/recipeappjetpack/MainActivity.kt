@@ -17,6 +17,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.ravemaster.recipeappjetpack.presentation.FeedsViewModel
 import com.ravemaster.recipeappjetpack.presentation.GetRecipesViewModel
 import com.ravemaster.recipeappjetpack.presentation.TagsViewModel
 import com.ravemaster.recipeappjetpack.ui.theme.PropoertiesAppJetpackTheme
@@ -27,6 +28,7 @@ class MainActivity : ComponentActivity() {
 
     val recipesViewModel: GetRecipesViewModel by viewModels()
     val tagsViewModel: TagsViewModel by viewModels()
+    val feedsViewModel: FeedsViewModel by viewModels()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,8 +39,11 @@ class MainActivity : ComponentActivity() {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 
                     LaunchedEffect(Unit) {
+
+                        feedsViewModel.getFeeds(10,0)
                         tagsViewModel.getTags()
                         recipesViewModel.getRecipes(0,20,"vegetarian")
+
                     }
                     MainScreen(modifier = Modifier.padding(innerPadding))
                 }
@@ -54,9 +59,38 @@ class MainActivity : ComponentActivity() {
                 .padding(5.dp),
             verticalArrangement = Arrangement.spacedBy(5.dp),
         ) {
+            FeedsSection()
             TagsSection()
             RecipesSection()
         }
+    }
+
+    @Composable
+    fun FeedsSection() {
+        val error = feedsViewModel.errors.collectAsState().value
+        val isLoading = feedsViewModel.loading.collectAsState().value
+        val feed = feedsViewModel.feeds.collectAsState().value
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+
+            if (isLoading) {
+                ShowProgressIndicator()
+            } else {
+                if (error.isNotEmpty()){
+                    ShowErrorMessage(error = error)
+                }else{
+                    if (feed.results.isEmpty()) {
+                        ShowErrorMessage(error = "feed unavailable")
+                    } else {
+                        ShowFeaturedItem(feed)
+                    }
+                }
+            }
+        }
+
+
     }
 
     @Composable
@@ -79,7 +113,6 @@ class MainActivity : ComponentActivity() {
                         ShowErrorMessage(error = "No recipes available")
                     } else {
                         ShowTags(tags, recipesViewModel)
-//                        ShowTags()
                     }
                 }
             }
