@@ -10,6 +10,7 @@ interface GetRecipes {
     suspend fun getRecipes(
         @Query("from") from: Int,
         @Query("size") size: Int,
+        @Query("tags") tags: String,
         @Header("x-rapidapi-key") apiKey: String,
         @Header("x-rapidapi-host") host: String,
     ): RecipesListResponse

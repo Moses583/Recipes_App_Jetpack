@@ -34,11 +34,11 @@ class GetRecipesViewModel @Inject constructor(
 
 
 
-    fun getRecipes(from: Int, size: Int){
+    fun getRecipes(from: Int, size: Int,tags: String){
 
         viewModelScope.launch {
 
-            recipesListRepository.getRecipes(from,size).collectLatest {
+            recipesListRepository.getRecipes(from,size,tags).collectLatest {
                 result ->
                 when(result){
                     is Resource.Error -> {

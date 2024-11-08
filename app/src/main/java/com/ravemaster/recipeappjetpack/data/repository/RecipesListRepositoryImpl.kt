@@ -13,13 +13,13 @@ import javax.inject.Inject
 class RecipesListRepositoryImpl @Inject constructor(
     private val getRecipes: GetRecipes
 ) : RecipesListRepository {
-    override suspend fun getRecipes(from: Int, size: Int): Flow<Resource<RecipesListResponse>> {
+    override suspend fun getRecipes(from: Int, size: Int,tags: String): Flow<Resource<RecipesListResponse>> {
         return flow {
 
             emit(Resource.Loading(true))
 
             val recipes = try {
-                getRecipes.getRecipes(from = from, size = size,
+                getRecipes.getRecipes(from = from, size = size, tags = tags,
                     "7a9a8d4846mshcfaa4b403a596e8p1d45b5jsneca71b63bb58","tasty.p.rapidapi.com")
             }catch (e: IOException){
                 e.printStackTrace()

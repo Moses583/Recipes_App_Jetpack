@@ -18,26 +18,30 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.ravemaster.recipeappjetpack.data.remote.gettags.models.Result
 import com.ravemaster.recipeappjetpack.data.remote.gettags.models.TagsApiResponse
+import com.ravemaster.recipeappjetpack.presentation.GetRecipesViewModel
 
 @Composable
-fun ShowTags(tags: TagsApiResponse) {
+fun ShowTags(tags: TagsApiResponse, recipesViewModel: GetRecipesViewModel) {
     LazyRow (
         contentPadding = PaddingValues(10.dp),
     ) {
         items(tags.results.size){ item ->
-            ShowTagsItem(tags.results[item])
+            ShowTagsItem(tags.results[item],recipesViewModel)
         }
     }
 }
 
 @Composable
-fun ShowTagsItem(result: Result) {
+fun ShowTagsItem(result: Result, recipesViewModel: GetRecipesViewModel) {
     Card(
         modifier = Modifier
             .wrapContentSize()
             .padding(8.dp),
         colors = CardDefaults.cardColors(Color.White),
-        shape = RoundedCornerShape(16.dp)
+        shape = RoundedCornerShape(16.dp),
+        onClick = {
+            recipesViewModel.getRecipes(0,20,result.name)
+        }
     ){
         Box(
             modifier = Modifier

@@ -5,5 +5,5 @@ import com.ravemaster.recipeappjetpack.domain.utils.Resource
 import kotlinx.coroutines.flow.Flow
 
 interface RecipesListRepository {
-    suspend fun getRecipes(from: Int, size: Int): Flow<Resource<RecipesListResponse>>
+    suspend fun getRecipes(from: Int, size: Int, tags: String): Flow<Resource<RecipesListResponse>>
 }
