@@ -5,11 +5,13 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -50,9 +52,10 @@ class MainActivity : ComponentActivity() {
         Column(
             modifier = modifier
                 .fillMaxSize()
-                .padding(5.dp)
+                .padding(5.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp),
         ) {
-//            TagsSection()
+            TagsSection()
             RecipesSection()
         }
     }
@@ -77,6 +80,7 @@ class MainActivity : ComponentActivity() {
                         ShowErrorMessage(error = "No recipes available")
                     } else {
                         ShowTags(tags)
+//                        ShowTags()
                     }
                 }
             }
